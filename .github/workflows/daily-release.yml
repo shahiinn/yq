@@ -115,6 +115,8 @@ jobs:
             man.md
 
       - name: Cross compile
+        env:
+          GORELEASER_CURRENT_TAG: ${{ needs.check-versions.outputs.yq_version }}
         run: |
           sudo apt-get install rhash -y
           go install github.com/goreleaser/goreleaser/v2@latest
